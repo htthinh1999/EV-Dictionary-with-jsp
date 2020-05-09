@@ -7,10 +7,37 @@
 	<title>TỪ ĐIỂN ANH - VIỆT</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+	<script>
+		$(function () {
+			var words = ${words};
+		    $("#txtInput").blur(function(){
+		         var keyEvent = $.Event("keydown");
+		         keyEvent.keyCode = $.ui.keyCode.ENTER;
+		         $(this).trigger(keyEvent);
+		         return false; 
+		     }).autocomplete({
+		        source: function(request, response){
+		        	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex(request.term), "i" );
+		            var results = $.ui.autocomplete.filter(words, request.term);
+		        	response(results.slice(0, 10));
+		        },
+		        messages:{
+		        	noResults:'',
+		        	results: function(){}
+		        },
+		        autoFocus: true
+		    });
+		    
+		});
+	</script>
+	
 </head>
 <body>
 	<div>
@@ -33,9 +60,9 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="form-inline">
-							<input type="text" class="form-control" name="txtInput">
-							<input type="submit" class="btn btn-secondary" value="Tra từ">
+						<td class="ui-widget">
+							<input type="text" id="txtInput" name="txtInput">
+							<button type="submit" class="ui-state-default ui-corner-all">Tra từ</button>
 						</td>
 					</tr>
 				</table>

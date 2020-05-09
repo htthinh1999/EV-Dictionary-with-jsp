@@ -27,7 +27,7 @@ public class DatabaseManager {
 				String word = rs.getString(2);
 				String detail = rs.getString(3);
 				
-				words.add(word);
+				words.add("\"" + word + "\"");
 				dictionary.put(word, detail);
 				
 			}
