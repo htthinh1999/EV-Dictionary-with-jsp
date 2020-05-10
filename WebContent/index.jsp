@@ -16,21 +16,32 @@
 	
 	<script>
 		$(function () {
+			// Override autocomplete filter to search only from the beginning of the string 
+			$.ui.autocomplete.filter = function (array, term){
+	        	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex(term), "i" );
+	        	return $.grep(array, function(value){
+	        		return matcher.test(value.label||value.value||value);
+	        	});
+            };
+
 			var words = ${words};
 		    $("#txtInput").blur(function(){
 		         var keyEvent = $.Event("keydown");
 		         keyEvent.keyCode = $.ui.keyCode.ENTER;
 		         $(this).trigger(keyEvent);
 		         return false; 
-		     }).autocomplete({
+		     }).autocomplete({	// Return 10 results
 		        source: function(request, response){
-		        	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex(request.term), "i" );
 		            var results = $.ui.autocomplete.filter(words, request.term);
 		        	response(results.slice(0, 10));
 		        },
-		        messages:{
+		        messages:{	// Hide result message found
 		        	noResults:'',
 		        	results: function(){}
+		        },
+		        select: function(event, ui){	// Make form submit when select
+		        	$(this).val(ui.item.value);
+		        	document.getElementById("search-form").submit();
 		        },
 		        autoFocus: true
 		    });
@@ -47,7 +58,7 @@
 		</div>
 		
 		<div style="text-align:center">
-			<form action="dictionary-look-up" method="post" style="display: inline-block;">
+			<form id="search-form" action="dictionary-look-up" method="post" style="display: inline-block;">
 				<table>
 					<tr>
 						<td colspan="2">
