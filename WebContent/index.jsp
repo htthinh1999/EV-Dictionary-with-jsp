@@ -54,7 +54,7 @@
 	<div>
 		<div class="jumbotron">
 			<h1>TỪ ĐIỂN ANH - VIỆT</h1>
-			<p>Tra cứu từ điển Anh - Việt trực tuyến miễn phí</p>
+			<h6>Tra cứu từ điển Anh - Việt trực tuyến miễn phí</h6>
 		</div>
 		
 		<div style="text-align:center">
@@ -72,7 +72,7 @@
 					</tr>
 					<tr>
 						<td class="ui-widget">
-							<input type="text" id="txtInput" name="txtInput">
+							<input type="search" id="txtInput" name="txtInput">
 							<button type="submit" class="ui-state-default ui-corner-all">Tra từ</button>
 						</td>
 					</tr>
@@ -80,6 +80,7 @@
 			</form>
 		</div>
 	</div>
+	<br>
 	<p style="display: block; margin-left: 10%;">
 		<%@page import="java.util.*"%>
 		<%
@@ -96,6 +97,13 @@
  			}
 		%>
 	</p>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<span><strong>TỪ ĐIỂN ANH - VIỆT</strong><br>
+		Đề tài được thực hiện bởi sinh viên <strong>Huỳnh Tấn Thịnh</strong> lớp <strong>ĐHCN4A</strong> trường <strong>ĐH Thông tin Liên Lạc</strong></span>
+	</footer>
+	<!-- Footer -->
 </body>
 </html>
 
