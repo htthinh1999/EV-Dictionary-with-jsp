@@ -56,20 +56,26 @@ p{
 	padding-right: 10%;
 }
 
+.jumbotron{
+	padding-top: 2%;
+	height: 150px;
+  background-color: #D3D3D3;
+}
+
 .footer {
   position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
   padding: 1rem;
-  background-color: #efefef;
+  background-color: #D3D3D3;
   text-align: center;
   height: 90px;
 }
 
 
 /* Medium devices */
-@media only screen and (max-width: 1200px) and (min-width: 700px){
+@media only screen and (max-width: 1400px) and (min-width: 1000px){
 	h1{
 		font-size: 40px;
 	}
@@ -91,6 +97,10 @@ p{
 	body{
 		padding-bottom: 110px;
 	}
+	.jumbotron{
+		padding-top: 3.5%;
+		height: 150px;
+	}
 	.footer{
 		font-size: 20px;
 		height: 110px;
@@ -100,10 +110,10 @@ p{
 /* Small devices */
 @media only screen and (max-width: 700px){
 	h1{
-		font-size: 20px;
+		font-size: 18px;
 	}
 	h2{
-		font-size: 18px;
+		font-size: 16px;
 	}
 	h6{
 		font-size: 12px;
@@ -120,8 +130,12 @@ p{
 	body{
 		padding-bottom: 75px;
 	}
+	.jumbotron{
+		padding-top: 4%;
+		height: 75px;
+	}
 	.footer{
 		font-size: 10px;
-		height: 75px;
+		height: 80px;
 	}
 }
